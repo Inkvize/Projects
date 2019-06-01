@@ -1,0 +1,26 @@
+﻿<head>
+	<title>Архив всех статей</title>
+	<link rel="stylesheet" href="{{ STATIC_URL }}css/article.css">
+</head>
+<body>
+    <div class="header"></div>
+    <div class="archive">
+    <h4 class = "to-archive"><a href = "/registration">Регистрация</a></h4>
+	<h4 class = "to-archive"><a href = "/login">Вход</a></h4>
+	{% for post in posts %}
+		<div class="one-post">
+			<div class="post-title">
+				<h2><a href = "article/{{post.id}}">{{ post.title }}</a></h2>
+			</div>
+			<a class = "fold-button" href = "" onclick = "return false;">свернуть</a>
+			<div style="clear: both"></div>
+			<div class="article-info">
+				<div class="article-author">{{ post.author.username }}</div>
+				<div class="article-created-date">{{ post.created_date }}</div> 
+			</div>
+			<p class="article-text">{{ post.get_excerpt }}</p>
+		 </div>
+	{% endfor %}
+    </div>
+	<script src="{{ STATIC_URL }}js/helloworld.js"></script>
+</body>
